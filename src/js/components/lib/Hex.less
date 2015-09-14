@@ -1,0 +1,55 @@
+.hex {
+	@size: 100px;
+	display: inline-block;
+
+	position: absolute;
+
+	margin: 0 1px 1px 0;
+
+	height: @size;
+	width: @size;
+
+	//background: rgba(0,0,0, .1);
+
+	transition: all 1s;
+
+	&__inner {
+		display: inline-block;
+
+		position: relative;
+
+		top: @size * .25;
+
+		width: @size;
+		height: @size * .5;
+
+		text-align: center;
+		line-height: @size * .5;
+
+		background: #aaa;
+
+		&:before,
+		&:after {
+			display: block;
+			content: "";
+
+			position: absolute;
+
+			top: -@size * .5;
+			left: 0;
+
+			border: @size * .5 solid transparent;
+			border-bottom-color: #aaa;
+			border-top-width: @size * .25;
+			border-bottom-width: @size * .25;
+		}
+
+		&:after {
+			top: auto;
+			bottom: -@size * .5;
+
+			border-top-color: #aaa;
+			border-bottom-color: transparent;
+		}
+	}
+}

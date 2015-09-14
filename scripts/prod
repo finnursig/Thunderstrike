@@ -1,0 +1,5 @@
+#!/bin/sh
+node server.js production &
+./node_modules/.bin/webpack -watch --config webpack.config.production.js
+
+kill %1
