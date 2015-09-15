@@ -1,4 +1,5 @@
 import { Router, Route } from 'react-router';
+import 'main.less';
 
 React.render((
 	<Router>

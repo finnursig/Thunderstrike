@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "scripts/dev",
-    "prod": "scripts/prod",
-    "postinstall": "scripts/build"
+    "dev": "sh scripts/dev",
+    "prod": "sh scripts/prod",
+    "postinstall": "sh scripts/build"
   },
   "repository": {
     "type": "git",
