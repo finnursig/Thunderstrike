@@ -8,6 +8,26 @@ var env = process.env.NODE_ENV || process.argv[2]  || 'development';
 var port = process.env.PORT || 5000;
 var url = 'http://localhost:'+ port;
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://ts:foobar@ds055762.mongolab.com:55762/thunderstrike');
+
+var boardSchema = new mongoose.Schema({
+	name: String,
+	created: { type: Date, default: Date.now }
+	//title:  String,
+	//author: String,
+	//body:   String,
+	//comments: [{ body: String, date: Date }],
+	//date: { type: Date, default: Date.now },
+	//hidden: Boolean,
+	//meta: {
+	//	votes: Number,
+	//	favs:  Number
+	//}
+});
+
+var Board = mongoose.model('Board', boardSchema);
+
 var app = express();
 var compiler = webpack(config);
 
@@ -40,8 +60,14 @@ app.use(function(req, res, next) {
 	}
 });
 
+app.get('/api/board', function(req, res){
+	Board.find({})
+		.then(function(board){
+			res.send(board);
+		});
+});
 
-app.get('/*', function(req, res){
+app.get('/*', (req, res) => {
 	res.render(path.join(__dirname, 'public', 'index.ejs'),{
 		env: env || 'development'
 	});

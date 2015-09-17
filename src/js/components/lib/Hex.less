@@ -1,5 +1,5 @@
 .hex {
-	@size: 97px;
+	@size: 100px;
 	display: inline-block;
 
 	position: absolute;
@@ -28,10 +28,6 @@
 
 		background: #aaa;
 
-		&:hover {
-			background: #777;
-		}
-
 		&:before,
 		&:after {
 			display: block;
@@ -54,6 +50,18 @@
 
 			border-top-color: #aaa;
 			border-bottom-color: transparent;
+		}
+
+		&:hover {
+			background: #777;
+
+			&:before {
+				border-bottom-color: #777;
+			}
+
+			&:after {
+				border-top-color: #777;
+			}
 		}
 	}
 }
