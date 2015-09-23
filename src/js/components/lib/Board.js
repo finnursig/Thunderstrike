@@ -23,7 +23,7 @@ export default class Board extends React.Component {
 
 		let children = this.getChildren(first, items);
 
-		console.log(children);
+		//console.log(children);
 
 		return (
 			<div className="board">
