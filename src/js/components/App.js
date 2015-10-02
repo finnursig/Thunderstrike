@@ -1,21 +1,35 @@
 import { Link } from 'react-router';
+import Header from 'lib/Header';
+import Layout from 'lib/Layout';
 import Scoreboard from 'lib/Scoreboard';
 
 export default class App extends React.Component {
+	static fetchData() {
+		return new Promise((resolve) => {
+
+			setTimeout(resolve, 0);
+
+		});
+	}
+
 	render(){
 		return(
 			<div>
-				<h1>THUNDERSTRIKE!</h1>
+				<Header />
 
-				<ul>
-					<li><Link to="/">Map</Link></li>
-					<li><Link to="/mapeditor">Map Editor</Link></li>
-					<li><Link to="/actions">Player Actions</Link></li>
-				</ul>
+				<Layout>
 
-				{this.props.children}
+					<ul>
+						<li><Link to="/">Map</Link></li>
+						<li><Link to="/mapeditor">Map Editor</Link></li>
+						<li><Link to="/actions">Player Actions</Link></li>
+					</ul>
 
-				<Scoreboard />
+					{this.props.children}
+
+					<Scoreboard />
+
+				</Layout>
 			</div>
 		);
 	}
