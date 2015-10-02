@@ -1,15 +1,30 @@
 import { Link } from 'react-router';
+import axios from 'axios';
+
 import Header from 'lib/Header';
 import Layout from 'lib/Layout';
 import Scoreboard from 'lib/Scoreboard';
 
 export default class App extends React.Component {
 	static fetchData() {
-		return new Promise((resolve) => {
+		return axios.get('/api/board');
+	}
 
-			setTimeout(resolve, 0);
+	constructor(){
+		super(...arguments);
 
-		});
+		this.state = {};
+	}
+
+	componentDidMount(){
+		App.fetchData()
+			.then((res) => {
+				this.setState({
+					board: res.data
+				});
+
+				console.log(res.data);
+			});
 	}
 
 	render(){

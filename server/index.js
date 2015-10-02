@@ -21,7 +21,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.resolve('public')));
 
 
-var apiRoutes = require('./api/routes');
+let apiRoutes = require('./api/routes');
 
 app.use('/api', apiRoutes);
 

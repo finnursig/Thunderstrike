@@ -9,10 +9,10 @@ var port = process.env.PORT || 5000;
 var url = 'http://localhost:'+ port;
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://ts:foobar@ds055762.mongolab.com:55762/thunderstrike');
+	mongoose.connect('mongodb://ts:foobar@ds055762.mongolab.com:55762/thunderstrike');
 
 let app = express();
-var compiler = webpack(config);
+let compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
 	noInfo: true,
@@ -48,7 +48,6 @@ app.get('/*', (req, res) => {
 	});
 });
 
-app.listen(port);
-
-console.log('Express running on port '+ port);
-
+app.listen(port, () => {
+	console.log('Express running on port '+ port);
+});
