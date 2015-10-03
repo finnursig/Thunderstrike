@@ -1,12 +1,30 @@
 .board {
-	position: relative;
+	position: absolute;
 
-	margin: 0 auto;
+	display: flex;
 
-	width: 1000px;
-	height: 1000px;
+	align-items: center;
+	justify-content: center;
 
-	background: rgba(0,0,0, .05);
+	//margin: 0 auto;
+
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 
 	user-select: none;
+
+	&__inner {
+		position: relative;
+
+		width: 910px;
+		height: 790px;
+
+		background: rgba(0,0,0, .1);
+
+		border-radius: 50%;
+
+		box-shadow: 0 0 0 50px rgba(0,0,0, .05), 0 0 0 100px rgba(0,0,0, .025);
+	}
 }

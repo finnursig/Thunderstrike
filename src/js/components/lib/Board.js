@@ -9,21 +9,42 @@ export default class Board extends React.Component {
 
 		return (
 			<div className="board">
-				{React.Children.map(this.props.children, (hex, index) => {
-					let y = Math.floor(index / size);
-					let x = (index % size);
+				<div className="board__inner">
+					{React.Children.map(this.props.children, (hex, index) => {
+						let y = Math.floor(index / size);
+						let x = (index % size);
 
-					let top = 76 * y;
-					let left = 101 * x + (y % 2 === 1 ? 50 : 0);
+						let top = 76 * y + 40;
+						let left = 101 * x + (y % 2 === 1 ? 50 : 0);
 
-					return React.cloneElement(hex, {
-						name: `${y}-${x}`,
-						style: {
-							top: top,
-							left: left
+						let meta = {};
+
+						if(x === 1 && y === 2){
+							meta.player = 'Player 1';
 						}
-					})
-				})}
+
+						if(x === 7 && y === 2){
+							meta.player = 'Player 2';
+						}
+
+						if(x === 1 && y === 6){
+							meta.player = 'Player 3';
+						}
+
+						if(x === 7 && y === 6){
+							meta.player = 'Player 4';
+						}
+
+						return React.cloneElement(hex, {
+							name: `${y}-${x}`,
+							meta,
+							style: {
+								top: top,
+								left: left
+							}
+						})
+					})}
+				</div>
 			</div>
 		);
 	}

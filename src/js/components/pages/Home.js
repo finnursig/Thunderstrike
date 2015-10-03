@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Board from 'lib/Board';
 import Hex from 'lib/Hex';
+import Timeline from 'lib/Timeline';
 
 import { board as boardData } from '../../data';
 
@@ -41,8 +42,7 @@ export default class Home extends React.Component {
 
 		return(
 			<div>
-				<h2>Board</h2>
-
+				<Timeline />
 				<Board size={size}>
 					{flatten(this.state.board.grid).map((item, i) => {
 						return (

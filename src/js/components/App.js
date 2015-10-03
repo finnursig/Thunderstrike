@@ -15,15 +15,19 @@ export default class App extends React.Component {
 
 				<Layout>
 
+					{/*
 					<ul>
 						<li><Link to="/">Map</Link></li>
 						<li><Link to="/mapeditor">Map Editor</Link></li>
 						<li><Link to="/actions">Player Actions</Link></li>
 					</ul>
+					 */}
 
 					{this.props.children}
 
+					{/*
 					<Scoreboard />
+					 */}
 
 				</Layout>
 			</div>

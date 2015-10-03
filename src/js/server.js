@@ -28,7 +28,7 @@ if(env === 'development'){
 app.set('view engine', 'ejs');
 app.use(express.static(path.resolve('public')));
 app.use(function(req, res, next) {
-	if(env !== 'production'){
+	if(env !== 'production2'){
 		next();
 
 		return;
