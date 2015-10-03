@@ -12,13 +12,19 @@ var mongoose = require('mongoose');
 	mongoose.connect('mongodb://ts:foobar@ds055762.mongolab.com:55762/thunderstrike');
 
 let app = express();
-let compiler = webpack(config);
 
-app.use(require('webpack-dev-middleware')(compiler, {
-	noInfo: true,
-	publicPath: config.output.publicPath
-}));
-app.use(require('webpack-hot-middleware')(compiler));
+
+if(env === 'development'){
+	let compiler = webpack(config);
+
+	app.use(require('webpack-dev-middleware')(compiler, {
+		noInfo: true,
+		publicPath: config.output.publicPath
+	}));
+	app.use(require('webpack-hot-middleware')(compiler));
+}
+
+
 app.set('view engine', 'ejs');
 app.use(express.static(path.resolve('public')));
 app.use(function(req, res, next) {

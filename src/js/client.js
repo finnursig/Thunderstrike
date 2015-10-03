@@ -35,14 +35,14 @@ import { renderToString } from 'react-dom/server';
 
 
 function onUpdate(){
-	match({ routes, location }, (err, redirectLocation, renderProps) => {
-		console.log('match', err, redirectLocation, renderProps);
-
-		fetchData(renderProps.components)
-			.then(() => {
-				console.log('done with fetch');
-			});
-	});
+	//match({ routes, location }, (err, redirectLocation, renderProps) => {
+	//	console.log('match', err, redirectLocation, renderProps);
+	//
+	//	fetchData(renderProps.components)
+	//		.then(() => {
+	//			console.log('done with fetch');
+	//		});
+	//});
 }
 
 
