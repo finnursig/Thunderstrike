@@ -6,26 +6,7 @@ import Layout from 'lib/Layout';
 import Scoreboard from 'lib/Scoreboard';
 
 export default class App extends React.Component {
-	static fetchData() {
-		return axios.get('/api/board');
-	}
 
-	constructor(){
-		super(...arguments);
-
-		this.state = {};
-	}
-
-	componentDidMount(){
-		App.fetchData()
-			.then((res) => {
-				this.setState({
-					board: res.data
-				});
-
-				console.log(res.data);
-			});
-	}
 
 	render(){
 		return(

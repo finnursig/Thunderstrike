@@ -3,7 +3,32 @@ import find from 'lodash/collection/find';
 import { board as boardData } from '../../data';
 
 export default class Board extends React.Component {
+
 	render(){
+		let size = this.props.size;
+
+		return (
+			<div className="board">
+				{React.Children.map(this.props.children, (hex, index) => {
+					let y = Math.floor(index / size);
+					let x = (index % size);
+
+					let top = 76 * y;
+					let left = 101 * x + (y % 2 === 1 ? 50 : 0);
+
+					return React.cloneElement(hex, {
+						name: `${y}-${x}`,
+						style: {
+							top: top,
+							left: left
+						}
+					})
+				})}
+			</div>
+		);
+	}
+
+	render2(){
 		let comps = {};
 
 
