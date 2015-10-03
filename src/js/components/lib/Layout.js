@@ -1,4 +1,4 @@
-import './layout.less';
+import './Layout.less';
 import { Link } from 'react-router';
 
 export default class Layout extends React.Component {
