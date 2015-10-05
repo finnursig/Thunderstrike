@@ -10,16 +10,17 @@ export default class App extends React.Component {
 
 	render(){
 		return(
-			<div>
-				<Header />
+			<div ref="test">
+				<Header>
+					<Link to="/actions">Player Actions</Link>
+				</Header>
 
 				<Layout>
-
 					{/*
 					<ul>
-						<li><Link to="/">Map</Link></li>
+						<li></li>
 						<li><Link to="/mapeditor">Map Editor</Link></li>
-						<li><Link to="/actions">Player Actions</Link></li>
+						<li></li>
 					</ul>
 					 */}
 

@@ -1,21 +1,51 @@
 .header {
+	@size: 50px;
+
 	position: absolute;
 
 	top: 0;
 	left: 0;
 	right: 0;
 
-	height: 50px;
-	line-height: 50px;
+	height: @size;
+	line-height: @size;
 
 	text-align: center;
 
 	background: #000;
 
-	> a {
+	&__logo {
 		display: inline-block;
 
 		color: #fff;
 		text-decoration: none;
+	}
+
+	&__nav {
+		position: absolute;
+
+		top: 0;
+		right: 0;
+
+		margin: 0;
+		padding: 0;
+
+		list-style: none;
+
+		&-item {
+			display: inline-block;
+
+			margin: 0 20px 0 0;
+			padding: 0;
+		}
+
+		&-link {
+			display: block;
+
+			color: #fff;
+			text-decoration: none;
+
+			line-height: @size;
+		}
 	}
 }

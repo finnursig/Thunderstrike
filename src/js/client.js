@@ -9,7 +9,7 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 import { Router, RoutingContext, match } from 'react-router';
 
 import { render } from 'react-dom';
-import { renderToString } from 'react-dom/server';
+//import { renderToString } from 'react-dom/server';
 
 //match({ routes, location }, (err, redirectLocation, renderProps) => {
 //	console.log(err, redirectLocation, renderProps);

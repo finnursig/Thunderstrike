@@ -38,7 +38,7 @@ module.exports = {
 	},
 
 	resolve: {
-		modulesDirectories: ['web_modules', 'node_modules', 'less', './src/js/components'],
+		modulesDirectories: ['web_modules', 'node_modules', 'less', './src/js/components', './src/js'],
 		extensions: ['', '.js', '.less']
 	},
 

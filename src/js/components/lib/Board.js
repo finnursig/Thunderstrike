@@ -20,19 +20,19 @@ export default class Board extends React.Component {
 						let meta = {};
 
 						if(x === 1 && y === 2){
-							meta.player = 'Player 1';
+							meta.player = 'Þórir';
 						}
 
 						if(x === 7 && y === 2){
-							meta.player = 'Player 2';
+							meta.player = 'Björn';
 						}
 
 						if(x === 1 && y === 6){
-							meta.player = 'Player 3';
+							meta.player = 'Finnur';
 						}
 
 						if(x === 7 && y === 6){
-							meta.player = 'Player 4';
+							meta.player = 'Magnús';
 						}
 
 						return React.cloneElement(hex, {

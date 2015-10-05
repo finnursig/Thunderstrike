@@ -1,4 +1,7 @@
 import axios from 'axios';
+import DesignAction from 'lib/DesignAction';
+
+import actionStore from 'stores/actionStore';
 
 export default class Actions extends React.Component {
 
@@ -14,14 +17,25 @@ export default class Actions extends React.Component {
 		};
 	}
 
-	componentDidMount(){
+	async componentDidMount(){
 
-		Actions.fetchData()
-			.then((res) => {
-				this.setState({
-					data: res.data
-				});
+		try {
+			let actions = await actionStore.all();
+
+			this.setState({
+				data: actions
 			});
+
+		} catch(e){
+			console.log(e);
+		}
+
+		//Actions.fetchData()
+		//	.then((res) => {
+		//		this.setState({
+		//			data: res.data
+		//		});
+		//	});
 
 	}
 
@@ -45,12 +59,15 @@ export default class Actions extends React.Component {
 						return (
 							<tr>
 								<td>{action._id}</td>
-								<td>{action.name}</td>
+								<td>{action.attacker.player}</td>
+								<td>{action.defender.player}</td>
 							</tr>
 						);
 					})}
 					</tbody>
 				</table>
+
+				<DesignAction type="new" />
 			</div>
 		);
 	}
