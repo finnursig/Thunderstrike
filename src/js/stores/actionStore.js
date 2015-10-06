@@ -4,6 +4,7 @@ class ActionStore {
 		this._data = [];
 
 		this._data.push({
+			id: 0,
 			won: false,
 			attacker: {
 				player: 'Þórir',
@@ -19,6 +20,7 @@ class ActionStore {
 		});
 
 		this._data.push({
+			id: 1,
 			won: true,
 			attacker: {
 				player: 'Björn',
@@ -32,9 +34,25 @@ class ActionStore {
 				to: [6,6]
 			}
 		});
+
+		//this._data.push({
+		//	id: 2,
+		//	won: true,
+		//	attacker: {
+		//		player: 'Magnús',
+		//		from: [6,7],
+		//		to: [5,6],
+		//		extra: [4,6]
+		//	},
+		//	defender: {
+		//		player: 'Þórir',
+		//		from: [1,1],
+		//		to: [3,0]
+		//	}
+		//});
 	}
 
-	async all(){
+	get all() {
 		return this._data;
 	}
 

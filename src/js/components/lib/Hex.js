@@ -59,8 +59,9 @@ export default class Hex extends React.Component {
 						<div className="hex__tooltip">{hexTypes[this.props.type].tooltip}</div>
 					) : null}
 
-					{this.props.meta.player ? (
-						<div className="hex__homeworld">{this.props.meta.player}</div>
+
+					{this.props.meta.player || this.props.owner ? (
+						<div className="hex__homeworld">{this.props.meta.player || this.props.owner}</div>
 					) : null}
 				</div>
 			</div>

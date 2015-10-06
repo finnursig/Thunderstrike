@@ -12,7 +12,9 @@ export default class App extends React.Component {
 		return(
 			<div ref="test">
 				<Header>
+					{/*
 					<Link to="/actions">Player Actions</Link>
+					 */}
 				</Header>
 
 				<Layout>
