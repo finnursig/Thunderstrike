@@ -1,12 +1,40 @@
 .scoreboard {
 	position: absolute;
 
-	left: 50%;
-	bottom: 10px;
+	left: 20px;
+	top: 80px;
 
 	padding: 20px;
 
-	border: 1px solid #000;
+	color: #fff;
 
-	background: #fff;
+	//border: 1px solid #000;
+
+	background: rgba(0,0,0, .75);
+
+	&__title {
+		margin: 0 0 10px;
+
+		font-weight: bold;
+		font-size: 20px;
+
+		text-align: center;
+	}
+
+	th {
+		text-align: left;
+	}
+
+	thead th {
+		padding-bottom: 5px;
+
+		font-size: 14px;
+		font-weight: normal;
+
+		opacity: .25;
+	}
+
+	tbody td {
+		text-align: center;
+	}
 }

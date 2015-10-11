@@ -1,5 +1,6 @@
 import flatten from 'lodash/array/flatten';
 import cloneDeep from 'lodash/lang/cloneDeep';
+import findWhere from 'lodash/collection/findWhere';
 import axios from 'axios';
 
 import actionStore from 'stores/actionStore';
@@ -7,6 +8,7 @@ import actionStore from 'stores/actionStore';
 import Board from 'lib/Board';
 import Hex from 'lib/Hex';
 import Timeline from 'lib/Timeline';
+import Scoreboard from 'lib/Scoreboard';
 
 import { board as boardData } from '../../data';
 
@@ -29,7 +31,7 @@ function hexOwner({ x, y }, from, data = actionStore.all){
 			&& (
 				(attackTo[0] === y && attackTo[1] === x)
 				||
-				(attackToExtra && attackToExtra[0] === y && attackToExtra[1] === x)
+				(attackToExtra && attackToExtra[0] === y && attackToExtra[1] === x && action.major)
 			)
 		){
 			owner = action.attacker.player;
@@ -37,7 +39,7 @@ function hexOwner({ x, y }, from, data = actionStore.all){
 			&& (
 				(defenderTo[0] === y && defenderTo[1] === x)
 				||
-				(defenderToExtra && defenderToExtra[0] === y && defenderToExtra[1] === x)
+				(defenderToExtra && defenderToExtra[0] === y && defenderToExtra[1] === x && action.major)
 			)
 		){
 			owner = action.defender.player;
@@ -45,6 +47,24 @@ function hexOwner({ x, y }, from, data = actionStore.all){
 	});
 
 	return owner;
+}
+
+function isUnderAttack(hex, round){
+	//findWhere(actionStore.all, (hex) => {})
+	let action = actionStore.all[round];
+
+	if(!action){
+		return false;
+	}
+
+	let attackingTo = action.attacker.to;
+	let defendingTo = action.defender.to;
+
+	return (
+		(attackingTo[0] === hex.y && attackingTo[1] === hex.x)
+		||
+		(defendingTo[0] === hex.y && defendingTo[1] === hex.x)
+	);
 }
 
 
@@ -58,7 +78,8 @@ export default class Home extends React.Component {
 
 		this.state = {
 			board: { grid: [] },
-			round: actionStore.all.length - 1
+			round: actionStore.all.length - 1,
+			phase: 'resolution'
 		};
 	}
 
@@ -100,17 +121,24 @@ export default class Home extends React.Component {
 				<Board size={size}>
 					{flatten(grid).map((item, i) => {
 						return (
-							<Hex key={i} type={item.type} owner={hexOwner(item, this.state.round)} />
+							<Hex key={i}
+							     type={item.type}
+							     owner={hexOwner(item, this.state.phase === 'planing' ? this.state.round - 1 : this.state.round)}
+							     isUnderAttack={isUnderAttack(item, this.state.round) && this.state.phase === 'planing'}
+								/>
 						);
 					})}
 				</Board>
+
+				<Scoreboard round={this.state.round} phase={this.state.phase} />
 			</div>
 		);
 	}
 
-	onTimelineChange(value){
+	onTimelineChange(value, phase){
 		this.setState({
-			round: value
+			round: value,
+			phase
 		})
 	}
 }

@@ -6,6 +6,7 @@ class ActionStore {
 		this._data.push({
 			id: 0,
 			won: false,
+			major: true,
 			attacker: {
 				player: 'Þórir',
 				from: [2,1],
@@ -22,6 +23,7 @@ class ActionStore {
 		this._data.push({
 			id: 1,
 			won: true,
+			major: true,
 			attacker: {
 				player: 'Björn',
 				from: [2,7],
@@ -35,25 +37,106 @@ class ActionStore {
 			}
 		});
 
-		//this._data.push({
-		//	id: 2,
-		//	won: true,
-		//	attacker: {
-		//		player: 'Magnús',
-		//		from: [6,7],
-		//		to: [5,6],
-		//		extra: [4,6]
-		//	},
-		//	defender: {
-		//		player: 'Þórir',
-		//		from: [1,1],
-		//		to: [3,0]
-		//	}
-		//});
+		this._data.push({
+			id: 2,
+			won: false,
+			major: true,
+			attacker: {
+				player: 'Magnús',
+				from: [6,7],
+				to: [6,6],
+				extra: [6,5]
+			},
+			defender: {
+				player: 'Finnur',
+				from: [6,2],
+				to: [5,2],
+				extra: [4,3]
+			}
+		});
+
+		this._data.push({
+			id: 3,
+			won: false,
+			major: false,
+			attacker: {
+				player: 'Þórir',
+				from: [2,1],
+				to: [3,0],
+				extra: [2,2]
+			},
+			defender: {
+				player: 'Björn',
+				from: [2,5],
+				to: [3,5],
+				extra: [3,4]
+			}
+		});
 	}
 
 	get all() {
 		return this._data;
+	}
+
+	getScore(playerName, from){
+		let score = 0;
+		let grid = {};
+
+		for(let x = 0; x < 9; x++){
+			for(let y = 0; y < 9; y++){
+
+				this._data.slice(0, from+1).forEach((action, i) => {
+					let owner = null;
+
+					let attackTo = action.attacker.to;
+					let attackToExtra = action.attacker.extra;
+					let defenderTo = action.defender.to;
+					let defenderToExtra = action.defender.extra;
+
+					if(action.won
+						&& (
+							(attackTo[0] === y && attackTo[1] === x)
+							||
+							(attackToExtra && attackToExtra[0] === y && attackToExtra[1] === x && action.major)
+						)
+					){
+						owner = action.attacker.player;
+					} else if(!action.won
+						&& (
+							(defenderTo[0] === y && defenderTo[1] === x)
+							||
+							(defenderToExtra && defenderToExtra[0] === y && defenderToExtra[1] === x && action.major)
+						)
+					){
+						owner = action.defender.player;
+					}
+
+					if(owner)
+						grid[`${y}-${x}`] = owner;
+				});
+
+			}
+		}
+
+		for(let key in grid){
+			if(grid[key] === playerName){
+				score++;
+			}
+		}
+
+		return score;
+	}
+
+	getPlayerTurnCount(playerName, from){
+		let turns = 0;
+
+		this._data.slice(0, from+1).forEach((action, i) => {
+			if(action.attacker.player === playerName || action.defender.player === playerName){
+				turns++;
+			}
+		});
+
+		return turns;
 	}
 
 }

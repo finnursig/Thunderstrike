@@ -13,6 +13,10 @@
 			border-top-color: @color;
 		}
 	}
+
+	&--@{name} &__position {
+		color: @font-color;
+	}
 }
 
 
@@ -128,24 +132,30 @@
 		font-family: Consolas, Menlo, Monaco, monospace;
 		font-size: 12px;
 
-		opacity: .25;
+		opacity: .35;
+
+		text-shadow: 0 1px rgba(255,255,255, .5);
 
 		transform: translate(-50%, 0);
 	}
 
 	&__homeworld {
-		position: relative;
+		position: absolute;
 		z-index: 20;
 
-		top: -8px;
+		top: 50%;
+		left: 50%;
 
 		font-family: Consolas, Menlo, Monaco, monospace;
 		font-size: 12px;
+		color: #222;
 
 		padding: 5px;
 
 		border-radius: 3px;
 		background: #fff;
+
+		transform: translate(-50%, -50%);
 
 		&:before {
 			@size: 5px;
@@ -169,7 +179,7 @@
 		@background-color: rgba(0,0,0, .8);
 
 		position: absolute;
-		z-index: 20;
+		z-index: 200;
 
 		left: 50%;
 		bottom: @size * .65;
@@ -216,5 +226,34 @@
 		opacity: 1;
 		transform: translate(-50%, 0%);
 		transition-delay: 0s;
+	}
+
+	&__attack {
+		position: absolute;
+		z-index: 10;
+
+		top: 0%;
+		left: 50%;
+
+		width: 20px;
+		height: 20px;
+
+		box-shadow: 0 0 0 2px rgba(255,255,255,.5);
+
+		background: red;
+
+		transform: translate(-50%, -50%) rotateZ(45deg);
+
+		&:before {
+			display: block;
+			content: "";
+
+			width: 20px;
+			height: 20px;
+
+			background: red;
+
+			transform: rotateZ(-45deg);
+		}
 	}
 }

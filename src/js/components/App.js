@@ -3,10 +3,8 @@ import axios from 'axios';
 
 import Header from 'lib/Header';
 import Layout from 'lib/Layout';
-import Scoreboard from 'lib/Scoreboard';
 
 export default class App extends React.Component {
-
 
 	render(){
 		return(
@@ -27,10 +25,6 @@ export default class App extends React.Component {
 					 */}
 
 					{this.props.children}
-
-					{/*
-					<Scoreboard />
-					 */}
 
 				</Layout>
 			</div>

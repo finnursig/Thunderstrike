@@ -63,6 +63,10 @@ export default class Hex extends React.Component {
 					{this.props.meta.player || this.props.owner ? (
 						<div className="hex__homeworld">{this.props.meta.player || this.props.owner}</div>
 					) : null}
+
+					{this.props.isUnderAttack ? (
+						<div className="hex__attack" />
+					) : null}
 				</div>
 			</div>
 		);
