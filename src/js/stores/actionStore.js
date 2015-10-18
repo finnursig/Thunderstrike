@@ -72,6 +72,24 @@ class ActionStore {
 				extra: [3,4]
 			}
 		});
+
+		this._data.push({
+			id: 4,
+			won: false,
+			major: true,
+			attacker: {
+				player: 'Þórir',
+				from: [2,1],
+				to: [2,2],
+				extra: [2,3]
+			},
+			defender: {
+				player: 'Magnús',
+				from: [6,7],
+				to: [6,6],
+				extra: [6,5]
+			}
+		});
 	}
 
 	get all() {
