@@ -126,6 +126,24 @@ class ActionStore {
 				extra: [2,2]
 			}
 		});
+
+		this._data.push({
+			id: 7,
+			won: true,
+			major: false,
+			attacker: {
+				player: 'Maggi',
+				from: [6,5],
+				to: [5,5],
+				extra: [5,4]
+			},
+			defender: {
+				player: 'Þórir',
+				from: [2,2],
+				to: [1,2],
+				extra: [2,3]
+			}
+		});
 	}
 
 	get all() {
