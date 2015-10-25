@@ -132,7 +132,7 @@ class ActionStore {
 			won: true,
 			major: false,
 			attacker: {
-				player: 'Maggi',
+				player: 'Magnús',
 				from: [6,5],
 				to: [5,5],
 				extra: [5,4]
