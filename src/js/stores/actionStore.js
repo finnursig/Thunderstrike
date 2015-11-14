@@ -182,7 +182,7 @@ class ActionStore {
 		});
 
 		this._data.push({
-			id: 9,
+			id: 10,
 			won: true,
 			major: true,
 			attacker: {
