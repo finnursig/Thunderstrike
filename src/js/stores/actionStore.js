@@ -184,7 +184,7 @@ class ActionStore {
 		this._data.push({
 			id: 10,
 			won: true,
-			major: true,
+			major: false,
 			attacker: {
 				player: 'Björn',
 				from: [3,7],
