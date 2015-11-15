@@ -23,6 +23,7 @@
     "extract-text-webpack-plugin": "^0.8.2",
     "history": "^1.9.1",
     "jquery": "^2.1.4",
+    "less": "*",
     "less-loader": "^2.2.0",
     "lodash": "^3.10.1",
     "mongoose": "^4.1.7",
