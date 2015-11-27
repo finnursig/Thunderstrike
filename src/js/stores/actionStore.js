@@ -201,7 +201,7 @@ class ActionStore {
 
 		this._data.push({
 			id: 11,
-			won: true,
+			won: false,
 			major: true,
             attacker: {
                 player: 'Þórir',
@@ -214,6 +214,24 @@ class ActionStore {
 				from: [2,5],
 				to: [2,4],
 				extra: [3,4]
+			}
+		});
+
+		this._data.push({
+			id: 12,
+			won: true,
+			major: true,
+            attacker: {
+                player: 'Finnur',
+                from: [5,3],
+                to: [6,4],
+                extra: [5,4]
+            },
+			defender: {
+                player: 'Þórir',
+                from: [2,2],
+                to: [1,2],
+                extra: [2,3]
 			}
 		});
 	}
