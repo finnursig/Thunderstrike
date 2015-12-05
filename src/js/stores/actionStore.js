@@ -252,6 +252,42 @@ class ActionStore {
                 extra: [4,5]
 			}
 		});
+
+		this._data.push({
+			id: 14,
+			won: true,
+			major: true,
+            attacker: {
+                player: 'Maggi',
+                from: [6,5],
+                to: [7,5],
+                extra: [7,4]
+            },
+            defender: {
+                player: 'Þórir',
+                from: [2,2],
+                to: [1,2],
+                extra: [2,3]
+            }
+		});
+
+		this._data.push({
+			id: 15,
+			won: true,
+			major: true,
+            attacker: {
+                player: 'Björn',
+                from: [3,3],
+                to: [3,2],
+                extra: [4,5]
+            },
+            defender: {
+                player: 'Þórir',
+                from: [2,2],
+                to: [1,2],
+                extra: [2,3]
+            }
+		});
 	}
 
 	get all() {
