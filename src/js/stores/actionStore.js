@@ -306,6 +306,24 @@ class ActionStore {
                 extra: [4,6]
             }
 		});
+
+		this._data.push({
+			id: 17,
+			won: true,
+			major: true,
+            attacker: {
+                player: 'Finnur',
+                from: [7,3],
+                to: [8,4],
+                extra: [8,5]
+            },
+            defender: {
+                player: 'Magnús',
+                from: [6,5],
+                to: [6,4],
+                extra: [5,6]
+            }
+		});
 	}
 
 	get all() {
